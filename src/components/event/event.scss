@@ -1,0 +1,44 @@
+.event {
+  position: absolute;
+  width: 80%;
+  background-color: cornflowerblue;
+  z-index: 1;
+  border-radius: 8px;
+  padding: 8px;
+  color: #fff;
+  cursor: pointer;
+
+  &__title {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 8px;
+  }
+
+  &:hover {
+    font-weight: bold;
+    background-color: rgb(255, 49, 49);
+  }
+}
+
+.delete-event-btn {
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  transform: rotate(45deg);
+  background-color: transparent;
+  border: none;
+  font-size: 32px;
+  opacity: 0.6;
+  background: #eee;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background: #ccc;
+  }
+}
