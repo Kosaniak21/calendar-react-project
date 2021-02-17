@@ -1,6 +1,6 @@
 <div align="center">
-  <img width="100%" height="auto" src="https://miro.medium.com/max/960/1*h9KAlpzxKXzmiHq7caAlYg.png">
-  <h1>React-Calendar</h1>
+  <img width="100%" height="auto" src="https://image.pngaaa.com/930/2507930-middle.png">
+  <h1 style="margin-bottom:20;">React-Calendar</h1>
 </div>
 
 
@@ -8,7 +8,7 @@
 
 ``` bash
 # Download repository:
-git clone https://github.com/Kosanyak19/calendar-react-project.git react-calendar-project
+git clone https://github.com/Kosanyak19/calendar-react-project.git 
 
 # Go to the app:
 cd react-calendar-project
