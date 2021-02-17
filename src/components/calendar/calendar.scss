@@ -81,8 +81,6 @@
 .calendar__day:nth-child(7n) > .calendar__time-slot {
     background-color: #515151;
 }
-
-
 .day-label {
     height: 100%;
     display: flex;
@@ -113,7 +111,6 @@
 .today .day-label__day-name {
     color: #fff;
 }
-
 .today .day-label__day-number {
   font-size: 23px;
   color: #fff;
@@ -121,7 +118,6 @@
   border-radius: 50%;
   font-weight: 400;
 }
-
 .red-line {
     position: absolute;
     width: 100%;
