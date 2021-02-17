@@ -34,6 +34,6 @@ npm run build
 *  Webpack
 
 
-<div></div>
+<div><h1></h1></div>
 
 Copyright (c) 2021-present, [Kosanyak Viktor](https://github.com/Kosanyak19)
