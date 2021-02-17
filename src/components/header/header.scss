@@ -1,30 +1,55 @@
 .header {
     display: flex;
-    height: 60px;
-    padding: 0 48px;
+    height: 70px;
+    align-items: center;
+    background-color: #242525;
+}
+.create-btn {
+    padding: 0 16px;
+    background-color: #4B3DC9;
+    width: 197px;
+    letter-spacing: 1.5px;
+    display: flex;
     align-items: center;
 }
-
-.create-event-btn {
-    padding: 0 16px;
-   
-    &__icon {
-        margin-right: 8px;
-    }
+.create-btn svg {
+    margin-right: 12px;
+    margin-left: 28px;
+    stroke: white;
+    stroke-width: 0.02em;
 }
 
 .navigation {
+    display: flex;
+    align-items: center;
     &__today-btn {
-        margin-left: 32px;
-        padding: 0 16px;
+        background-color:#6C60FF;
+        width: 164px;
+        letter-spacing: 1.5px;
+        margin-right: 15px;
     }
 
     &__nav-icon {
         font-size: 16px;
-        margin-left: 20px;
     }
-
     &__displayed-month {
         margin-left: 10px;
+        color: #B3B3B3;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 21px;
+        margin-right: 10px;
+        letter-spacing: 2px;
     }
+}
+.icon:hover {
+  fill:black;
+}
+.fas {
+    color: #B3B3B3;
+    font-size: 15px;
+    font-weight: bold;
+}
+.fas:hover {
+    color: whitesmoke;
 }

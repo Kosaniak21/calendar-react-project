@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Modal from '../modal/Modal';
-import Navigation from './../navigation/Navigation';
+import Navigation from '../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
 import { getEventsList, deleteEvent } from '../../gateway/events';
@@ -11,16 +11,16 @@ import './calendar.scss';
 const Calendar = ({ weekDates, isModalVisible, setModalVisible }) => {
   const [events, setEvents] = useState([]);
 
-  useEffect(() => {
-    getEvents();
-  }, []);
-
   const getEvents = () => {
     getEventsList()
-      .then(events => setEvents(events))
+      .then(allEvents => setEvents(allEvents))
       .catch(error => alert(error.message));
   };
 
+  useEffect(() => {
+    getEvents();
+  }, []);
+  
   const handleDeleteEvent = id => {
     deleteEvent(id)
       .then(() => getEvents())
@@ -33,8 +33,8 @@ const Calendar = ({ weekDates, isModalVisible, setModalVisible }) => {
         <Navigation weekDates={weekDates} />
         <div className="calendar__body">
           <div className="calendar__week-container">
-            <Sidebar />
-            <Week weekDates={weekDates} events={events} onDeleteEvent={handleDeleteEvent} />
+              <Sidebar />
+              <Week weekDates={weekDates} events={events} onDeleteEvent={handleDeleteEvent} />
           </div>
         </div>
       </section>

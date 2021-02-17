@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-import './event.scss';
+import "./event.scss";
 
-const Event = ({ height, marginTop, id, title, time, onDeleteEvent }) => {
+const Event = ({ height, marginTop, id, title, time, onDeleteEvent ,description }) => {
   const [isDeleteBtnVisible, setIsDeleteBtnVisible] = useState(false);
 
   const eventStyle = {
@@ -18,7 +18,10 @@ const Event = ({ height, marginTop, id, title, time, onDeleteEvent }) => {
       onClick={() => setIsDeleteBtnVisible(!isDeleteBtnVisible)}
     >
       <div className="event__title">{title}</div>
-      <div className="event__time">{time}</div>
+      <div className="event__time">
+        <p>{time}</p>
+        <div className="event__description">{description}</div>
+      </div>
       {isDeleteBtnVisible && (
         <button className="delete-event-btn" onClick={() => onDeleteEvent(id)}>
           +

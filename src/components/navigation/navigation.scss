@@ -1,17 +1,10 @@
-.calendar {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 60px);
-    &__header {
-      display: flex;
-      height: 100px;
-      padding-left: 48px;
-    }
-  
-    &__day {
-      position: relative;
-      flex: 1;
-      border-left: 1px solid #eee;
-    }
-  }
-  
+.today_circle {
+  border-radius: 50%;
+  background-color: #6C60FF;
+  width: 104px;
+  height: 104px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

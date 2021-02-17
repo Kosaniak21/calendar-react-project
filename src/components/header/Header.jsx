@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import IconSvg from './IconSvg.jsx';
 import HeaderNavigation from './HeaderNavigation';
 
 import './header.scss';
 
-const Header = ({ weekDates, setModalVisible, onPrevWeek, onNextWeek, onTodayWeek }) => {
-  return (
+const Header = ({ weekDates, setModalVisible, onPrevWeek, onNextWeek, onTodayWeek }) => (
     <header className="header">
-      <button className="button create-event-btn" onClick={() => setModalVisible(true)}>
-        <i className="fas fa-plus create-event-btn__icon"></i>Create
+      <button className="button create-btn" onClick={() => setModalVisible(true)}>
+        <IconSvg fill='white' className='icon' />
+        Create
       </button>
       <HeaderNavigation
         onPrevWeek={onPrevWeek}
@@ -19,7 +19,6 @@ const Header = ({ weekDates, setModalVisible, onPrevWeek, onNextWeek, onTodayWee
       />
     </header>
   );
-};
 
 Header.propTypes = {
   onPrevWeek: PropTypes.func.isRequired,

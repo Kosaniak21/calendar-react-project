@@ -3,15 +3,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   &__content {
+      width: 497px;
+      height: 335px;
       background: #fff;
       padding: 16px;
       border: 1px solid #ccc;
-      border-radius: 8px;
   }
 }
-
 .overlay {
   position: fixed;
   top: 0;
@@ -19,13 +18,11 @@
   width: 100vw;
   height: 100vh;
   background-color: #cccccc45;
-  z-index: 10;
+  z-index: 100;
 }
-
 .create-event {
   display: flex;
   flex-direction: column;
-
   &__close-btn {
     margin-left: auto;
     transform: rotate(45deg) scale(2);
@@ -37,25 +34,62 @@
     height: 24px;
     background: transparent;
   }
+  &__heading {
+    display: flex;
+    justify-content: center;
+    p {
+      margin-left: 8px;
+      font-size: 19px;
+    }
+  }
 }
-
 .event-form {
 display: flex;
 flex-direction: column;
-
-&__field {
-  margin: 8px;
-  border: none;
+  &__field {
+    margin: 8px;
+  }
+  &__submit-btn {
+    width: 110px;
+    height: 41px;
+    margin: 8px;
+    margin-left: auto;
+    border: none;
+    color: #fff;
+    background-color: #4B3DC9;
+    border: none;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  &__time {
+    display: flex; 
+    font-size: 13px;
+    color: #515050;
+    justify-content: space-between;
+  }
 }
-
-&__submit-btn {
-  margin: 8px;
-  margin-left: auto;
-  border: none;
-  color: #fff;
-  background-color: cornflowerblue;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
+.title__input {
+  padding: 5px 0px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid #CFD2D4;
+  color: #515050;
 }
+.title__input::placeholder {
+  color: #515050;
+}
+.date__input {
+  border: none;
+  background-color:#F1F0F5;
+  padding: 7px 10px 7px 20px;
+}
+.event-form__description {
+  height: 80px;
+  background-color: #F1F0F5;
+  color: #515050;
+  border: none;
+  padding: 10px 15px;
 }

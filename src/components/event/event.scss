@@ -1,9 +1,11 @@
 .event {
   position: absolute;
-  width: 80%;
-  background-color: cornflowerblue;
+  width: 100%;
+  background-color:#309397;
+  position: relative;
+  display: flex;
+  align-items: center;
   z-index: 1;
-  border-radius: 8px;
   padding: 8px;
   color: #fff;
   cursor: pointer;
@@ -12,15 +14,27 @@
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
     white-space: nowrap;
     margin-bottom: 8px;
   }
-
+  &__time {
+    position: absolute;
+    top: 80%;
+    transition: all 0.5s;
+    opacity: 0;
+  }
   &:hover {
-    font-weight: bold;
-    background-color: rgb(255, 49, 49);
+    background-color: #E46472;
   }
 }
+.event:hover .event__time {
+  transition: all 0.5s;
+  top: 100%;
+  opacity: 1;
+}
+
+
 
 .delete-event-btn {
   position: absolute;

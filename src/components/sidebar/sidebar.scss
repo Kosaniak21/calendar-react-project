@@ -8,16 +8,17 @@
         width: 48px;
     }
 }
-
 .time-slot {
     height: 60px;
     width: 48px;
     text-align: right;
+    z-index: 999;
     &__time {
-       // position: relative;
-        font-size: 12px;
-        opacity: 0.7;
-        top: -12px;
+       position: relative;
+        font-size: 20px;
+        color: #9A9FA3;
+         z-index: 99999;
+        // top: -12px;
         margin-right: 4px;
     }
 }
