@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="100%" height="auto" src="https://image.pngaaa.com/930/2507930-middle.png">
+  <img width="100%" src="https://image.pngaaa.com/897/2507897-middle.png">
   <h1 style="margin-bottom:20;">React-Calendar</h1>
 </div>
 
