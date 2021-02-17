@@ -33,9 +33,5 @@ npm run build
 *  React - library
 *  Webpack
 
-<div align="center">
-  <h2>Settings:</h2>
-</div>
-
 
 Copyright (c) 2021-present, [Kosanyak Viktor](https://github.com/Kosanyak19)
