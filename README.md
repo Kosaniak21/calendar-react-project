@@ -1,6 +1,6 @@
 <div align="center">
-  <img width="100%" src="https://image.pngaaa.com/897/2507897-middle.png">
-  <h1 style="margin-bottom:20;">React-Calendar</h1>
+  <img width="100%" src="https://crispersoft.com/ru/wp-content/uploads/2020/01/reactready-1024x341.jpg">
+  <h1 style="margin-bottom:20px; margin-top:20px;">React-Calendar</h1>
 </div>
 
 
