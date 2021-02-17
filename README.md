@@ -34,4 +34,6 @@ npm run build
 *  Webpack
 
 
+<div></div>
+
 Copyright (c) 2021-present, [Kosanyak Viktor](https://github.com/Kosanyak19)
