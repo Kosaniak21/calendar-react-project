@@ -32,6 +32,7 @@ npm run build
 *  BEM methodology
 *  React - library
 *  Webpack
+*  moment.js and data-fns
 
 
 <div><h1></h1></div>
