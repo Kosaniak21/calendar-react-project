@@ -4,6 +4,14 @@
 </div>
 
 
+## Specification:
+
+Tic-tac-toe game made in the process of minimax algorigthm experimentations.
+
+MINIMAX with alpha-beta pruning used for AI, React used for the visual part.
+
+Demo parameters are: 3*3 board, 3x sequence length, max minimax depth is 7
+
 ## Build Setup:
 
 ``` bash
