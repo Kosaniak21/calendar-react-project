@@ -1,24 +1,23 @@
 .calendar {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 60px);
-    
-    &__time-scale {
-        height: 100%;
-        width: 48px;
-    }
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+
+  &__time-scale {
+    height: 100%;
+    width: 48px;
+  }
 }
 .time-slot {
-    height: 60px;
-    width: 48px;
-    text-align: right;
-    z-index: 999;
-    &__time {
-       position: relative;
-        font-size: 20px;
-        color: #9A9FA3;
-         z-index: 99999;
-        // top: -12px;
-        margin-right: 4px;
-    }
+  height: 60px;
+  width: 48px;
+  text-align: right;
+  z-index: 999;
+  &__time {
+    position: relative;
+    font-size: 20px;
+    color: #9a9fa3;
+    z-index: 99999;
+    margin-right: 4px;
+  }
 }

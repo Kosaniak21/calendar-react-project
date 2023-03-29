@@ -12,12 +12,11 @@ const Day = ({ dataDay, dayStart, dayEvents, onDeleteEvent }) => {
 
   return (
     <div className="calendar__day" data-day={dataDay}>
-      {hours.map(hour => {
-        const hourEvents = dayEvents.filter(event => event.dateFrom.getHours() === hour);
-
+      {hours.map((hour) => {
+        const hourEvents = dayEvents.filter((event) => event.dateFrom.getHours() === hour);
         return (
           <Hour
-            key={dataDay+hour}
+            key={dataDay + hour}
             dataHour={hour}
             hourEvents={hourEvents}
             onDeleteEvent={onDeleteEvent}

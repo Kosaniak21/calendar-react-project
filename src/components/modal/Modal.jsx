@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { format, addMinutes } from 'date-fns';
 
@@ -7,22 +7,21 @@ import { getDateTime } from '../../utils/dateUtils';
 import './modal.scss';
 
 const Modal = ({ setModalVisible, getEvents }) => {
-  const [title, setTitle] = useState('');
   const [date, setDate] = useState(format(new Date(), 'yyyy-MM-dd'));
   const [startTime, setStartTime] = useState(format(new Date(), 'HH:mm'));
   const [endTime, setEndTime] = useState(format(addMinutes(new Date(), 15), 'HH:mm'));
-  const [description, setDescription] = useState('');
 
-  const handleSubmit = event => {
+  const titleRef = useRef();
+  const descriptionRef = useRef();
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-
     const newEvent = {
-      title: title,
+      title: titleRef.current.value,
       dateFrom: getDateTime(date, startTime),
       dateTo: getDateTime(date, endTime),
-      description: description,
+      description: descriptionRef.current.value,
     };
-
     createEvent(newEvent).then(() => getEvents());
     setModalVisible(false);
   };
@@ -39,11 +38,11 @@ const Modal = ({ setModalVisible, getEvents }) => {
           </div>
           <form className="event-form" onSubmit={handleSubmit}>
             <input
+              ref={titleRef}
               type="text"
               name="title"
               placeholder="Title"
               className="event-form__field title__input"
-              onChange={e => setTitle(e.target.value)}
             />
             <div className="event-form__time">
               <input
@@ -51,33 +50,33 @@ const Modal = ({ setModalVisible, getEvents }) => {
                 name="date"
                 className="event-form__field date__input"
                 value={date}
-                onChange={e => setDate(e.target.value)}
+                onChange={(e) => setDate(e.target.value)}
               />
               <div>
-               <input
+                <input
                   type="time"
                   name="startTime"
-                  className="event-form__field date__input" 
+                  className="event-form__field date__input"
                   value={startTime}
-                  onChange={e => setStartTime(e.target.value)}
+                  onChange={(e) => setStartTime(e.target.value)}
                   required
-               />
-               <span>-</span>
-               <input
+                />
+                <span>-</span>
+                <input
                   type="time"
                   name="endTime"
                   className="event-form__field date__input"
                   value={endTime}
-                  onChange={e => setEndTime(e.target.value)}
+                  onChange={(e) => setEndTime(e.target.value)}
                   required
-               />
+                />
               </div>
             </div>
             <textarea
+              ref={descriptionRef}
               name="description"
               placeholder="Description"
               className="event-form__field event-form__description"
-              onChange={e => setDescription(e.target.value)}
             ></textarea>
             <button type="submit" className="event-form__submit-btn">
               Create

@@ -1,115 +1,110 @@
 .calendar {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+  z-index: 0;
+  position: relative;
+  &__header {
     display: flex;
-    flex-direction: column;
-    height: calc(100vh - 60px);
-    z-index: 0;
+    height: 130px;
+    padding-left: 60px;
+    position: fixed;
+    z-index: -1;
+    width: 99%;
+    background-color: #363737;
+  }
+  &__body {
+    display: flex;
+    overflow: auto;
     position: relative;
-    &__header {
-        display: flex;
-        height: 130px;
-        padding-left: 60px;
-        position: fixed;
-        z-index: -1;
-        width: 99%;
-        background-color: #363737;
-    }
-    &__body {
-        display: flex;
-        overflow: auto;
-        position: relative;
-        z-index: 10;
-        padding-top: 130px;
-    }
-    &__week-container {
-        display: flex;
-        width: 100%;
-        height: fit-content;
-    }
-    &__time-scale {
-        height: 100%;
-        width: 67px;
-        background-color:#363737;
-        margin-top: -11px;
-        // display: flex;
-        // justify-content: center;
-        // flex-direction: column;
-    }
-    &__week {
-        display: flex;
-        flex: 1;
-        background-color:#363737;
-    }
-    &__day {
-        position: relative;
-        flex: 1;
-        border-right: 1px solid #CFD2D4;
-    }
-    &__time-slot {
-        height: 60px;
-        position: relative;
-        border-top: 1px solid#CFD2D4;
-    }
-    &__day-label {
-        flex: 1;
-    }
-    &__day-label:nth-child(6n) {
-      background-color:#515151;
-    }
-    &__day-label:nth-child(7n) {
-        background-color:#515151;
-    }
-    &__day-label:nth-child(6n) > .day-label__day-number {
-        color:#777777;
-    }
-    &__day-label:nth-child(7n) .day-label__day-number {
-        color:#777777;
-    }
+    z-index: 10;
+    padding-top: 130px;
+  }
+  &__week-container {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+  }
+  &__time-scale {
+    height: 100%;
+    width: 67px;
+    background-color: #363737;
+  }
+  &__week {
+    display: flex;
+    flex: 1;
+    background-color: #363737;
+  }
+  &__day {
+    position: relative;
+    flex: 1;
+    border-right: 1px solid #cfd2d4;
+  }
+  &__time-slot {
+    height: 60px;
+    position: relative;
+    border-top: 1px solid#CFD2D4;
+  }
+  &__day-label {
+    flex: 1;
+  }
+  &__day-label:nth-child(6n) {
+    background-color: #515151;
+  }
+  &__day-label:nth-child(7n) {
+    background-color: #515151;
+  }
+  &__day-label:nth-child(6n) > .day-label__day-number {
+    color: #777777;
+  }
+  &__day-label:nth-child(7n) .day-label__day-number {
+    color: #777777;
+  }
 }
 .calendar__day:first-child > .calendar__time-slot:before {
-    content:'';
-    width: 6px;
-    height: 6px;
-    background-color: #CFD2D4;
-    position: absolute;
-    border-radius: 50%;
-    top: -4px; 
-    left: -3px; 
+  content: '';
+  width: 6px;
+  height: 6px;
+  background-color: #cfd2d4;
+  position: absolute;
+  border-radius: 50%;
+  top: -4px;
+  left: -3px;
 }
 .calendar__day:nth-child(6n) > .calendar__time-slot {
-    background-color: #515151;
+  background-color: #515151;
 }
 .calendar__day:nth-child(7n) > .calendar__time-slot {
-    background-color: #515151;
+  background-color: #515151;
 }
 .day-label {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    &__day-name {
-        font-size: 14px;
-        text-transform: uppercase;
-        font-size: 23px;
-        font-weight: 400;
-        margin-bottom: 7px;
-        color: #9A9FA3;
-    }
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__day-name {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-size: 23px;
+    font-weight: 400;
+    margin-bottom: 7px;
+    color: #9a9fa3;
+  }
 
-    &__day-number {
-        color: #515050;
-        font-size: 22px;
-        font-weight: 400;
-        font-size: 23px;
-    }
+  &__day-number {
+    color: #515050;
+    font-size: 22px;
+    font-weight: 400;
+    font-size: 23px;
+  }
 }
 .calendar__week-circle {
   border-radius: 50%;
   background-color: red;
-
 }
 .today .day-label__day-name {
-    color: #fff;
+  color: #fff;
 }
 .today .day-label__day-number {
   font-size: 23px;
@@ -119,12 +114,11 @@
   font-weight: 400;
 }
 .red-line {
-    position: absolute;
-    width: 100%;
-    border-top: 2px solid red;
-    z-index: 5;
+  position: absolute;
+  width: 100%;
+  border-top: 2px solid red;
+  z-index: 5;
 }
 .calendar__week-circle {
-    border-radius: 50%;
-
+  border-radius: 50%;
 }
