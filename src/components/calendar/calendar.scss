@@ -54,12 +54,6 @@
   &__day-label:nth-child(7n) {
     background-color: #515151;
   }
-  // &__day-label:nth-child(6n) > .day-label__day-number {
-  //   color: #777777;
-  // }
-  // &__day-label:nth-child(7n) .day-label__day-number {
-  //   color: #777777;
-  // }
 }
 .calendar__day:first-child > .calendar__time-slot:before {
   content: '';
