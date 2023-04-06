@@ -1,32 +1,28 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import "./event.scss";
+import './event.scss';
 
-const Event = ({ height, marginTop, id, title, time, onDeleteEvent ,description }) => {
-  const [isDeleteBtnVisible, setIsDeleteBtnVisible] = useState(false);
-
+const Event = ({ height, marginTop, id, title, time, description, setEventVisible }) => {
   const eventStyle = {
     height,
     marginTop,
   };
-
+  if (eventStyle.height < 25) {
+    eventStyle.fontSize = '0.8rem';
+  } else {
+    eventStyle.fontSize = '1rem';
+  }
   return (
     <div
       className="event"
       style={eventStyle}
-      onClick={() => setIsDeleteBtnVisible(!isDeleteBtnVisible)}
+      onClick={(e) => {
+        e.stopPropagation();
+        setEventVisible({ isVisible: true, title, time, description, id });
+      }}
     >
       <div className="event__title">{title}</div>
-      <div className="event__time">
-        <p>{time}</p>
-        <div className="event__description">{description}</div>
-      </div>
-      {isDeleteBtnVisible && (
-        <button className="delete-event-btn" onClick={() => onDeleteEvent(id)}>
-          +
-        </button>
-      )}
     </div>
   );
 };
@@ -38,6 +34,7 @@ Event.propTypes = {
   title: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   onDeleteEvent: PropTypes.func.isRequired,
+  setEventVisible: PropTypes.func.isRequired,
 };
 
 export default Event;

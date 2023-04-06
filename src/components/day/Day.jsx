@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 import Hour from '../hour/Hour';
 
-import './day.scss';
-
-const Day = ({ dataDay, dayStart, dayEvents, onDeleteEvent }) => {
+const Day = ({ dataDay, dayStart, dayEvents, onDeleteEvent, setModalVisible, setEventVisible }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
@@ -21,6 +19,8 @@ const Day = ({ dataDay, dayStart, dayEvents, onDeleteEvent }) => {
             hourEvents={hourEvents}
             onDeleteEvent={onDeleteEvent}
             dayStart={dayStart}
+            setModalVisible={setModalVisible}
+            setEventVisible={setEventVisible}
           />
         );
       })}
@@ -33,6 +33,7 @@ Day.propTypes = {
   dayStart: PropTypes.instanceOf(Date).isRequired,
   dayEvents: PropTypes.array.isRequired,
   onDeleteEvent: PropTypes.func.isRequired,
+  setEventVisible: PropTypes.func.isRequired,
 };
 
 export default Day;

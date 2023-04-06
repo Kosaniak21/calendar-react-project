@@ -1,39 +1,37 @@
 .event {
   position: absolute;
-  width: 100%;
-  background-color: #309397;
+  width: 97%;
+  background-color: #2b505e;
   position: relative;
   display: flex;
   align-items: center;
   z-index: 1;
-  padding: 8px;
   color: #fff;
   cursor: pointer;
-
+  border-radius: 12px;
+  border-left: 12px solid #04dec4;
+  margin-left: 2px;
   &__title {
-    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
     white-space: nowrap;
-    margin-bottom: 8px;
+    // font-size: 70%;
+    margin-left: 7px;
   }
   &__time {
     position: absolute;
     top: 80%;
-    transition: all 0.5s;
-    opacity: 0;
+    animation: identifier 0.5s ease-in-out forwards;
+    display: none;
+    z-index: 2;
   }
   &:hover {
-    background-color: #e46472;
+    border-right: 1px solid #04dec4;
+    border-top: 1px solid #04dec4;
+    border-bottom: 1px solid #04dec4;
   }
 }
-.event:hover .event__time {
-  transition: all 0.5s;
-  top: 100%;
-  opacity: 1;
-}
-
 .delete-event-btn {
   position: absolute;
   top: -35px;

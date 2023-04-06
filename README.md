@@ -5,11 +5,13 @@
 
 ## Specification:
 
-Tic-tac-toe game made in the process of minimax algorigthm experimentations.
+This is a simple React application that allows users to keep track of events on specific dates and times. Users can add events to the calendar by clicking on a specific date and entering the details of the event.
 
-MINIMAX with alpha-beta pruning used for AI, React used for the visual part.
-
-Demo parameters are: 3\*3 board, 3x sequence length, max minimax depth is 7
+Features
+-User-friendly interface
+-Ability to add events to specific dates and times
+-Responsive design for use on desktop and mobile devices
+-Built using React and other modern web technologies
 
 ## Build Setup:
 
@@ -43,4 +45,4 @@ npm run build
 
 <div><h1></h1></div>
 
-Copyright (c) 2021-present, [Kosanyak Viktor](https://github.com/Kosanyak19)
+Copyright (c) 2021-present, [Kosaniak Viktor](https://github.com/Kosanyak19)

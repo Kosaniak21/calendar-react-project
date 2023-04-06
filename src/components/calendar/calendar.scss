@@ -54,12 +54,12 @@
   &__day-label:nth-child(7n) {
     background-color: #515151;
   }
-  &__day-label:nth-child(6n) > .day-label__day-number {
-    color: #777777;
-  }
-  &__day-label:nth-child(7n) .day-label__day-number {
-    color: #777777;
-  }
+  // &__day-label:nth-child(6n) > .day-label__day-number {
+  //   color: #777777;
+  // }
+  // &__day-label:nth-child(7n) .day-label__day-number {
+  //   color: #777777;
+  // }
 }
 .calendar__day:first-child > .calendar__time-slot:before {
   content: '';
@@ -77,6 +77,16 @@
 .calendar__day:nth-child(7n) > .calendar__time-slot {
   background-color: #515151;
 }
+.today .day-label__day-name {
+  color: #fff;
+}
+.today .day-label__day-number {
+  font-size: 23px;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: 400;
+}
 .day-label {
   height: 100%;
   display: flex;
@@ -93,7 +103,7 @@
   }
 
   &__day-number {
-    color: #515050;
+    color: #6f7880;
     font-size: 22px;
     font-weight: 400;
     font-size: 23px;
@@ -102,16 +112,6 @@
 .calendar__week-circle {
   border-radius: 50%;
   background-color: red;
-}
-.today .day-label__day-name {
-  color: #fff;
-}
-.today .day-label__day-number {
-  font-size: 23px;
-  color: #fff;
-  text-align: center;
-  border-radius: 50%;
-  font-weight: 400;
 }
 .red-line {
   position: absolute;

@@ -3,28 +3,35 @@ import PropTypes from 'prop-types';
 
 import Modal from '../modal/Modal';
 import Navigation from '../navigation/Navigation';
-import Week from '../week/Week';
+import Week from '../week/Week.jsx';
 import Sidebar from '../sidebar/Sidebar';
 import { getEventsList, deleteEvent } from '../../gateway/events';
 import './calendar.scss';
+import ModalEvent from '../event/ModalEvent';
 
 const Calendar = ({ weekDates, isModalVisible, setModalVisible }) => {
   const [events, setEvents] = useState([]);
+  const [isEventVisible, setEventVisible] = useState({
+    isVisible: false,
+    title: '',
+    description: '',
+    time: '',
+    id: null,
+  });
 
   const getEvents = () => {
     getEventsList()
-      .then(allEvents => setEvents(allEvents))
-      .catch(error => alert(error.message));
+      .then((allEvents) => setEvents(allEvents))
+      .catch((error) => alert(error.message));
   };
-
   useEffect(() => {
     getEvents();
   }, []);
-  
-  const handleDeleteEvent = id => {
+
+  const handleDeleteEvent = (id) => {
     deleteEvent(id)
-      .then(() => getEvents())
-      .catch(error => alert(error.message));
+      .then((res) => getEvents())
+      .catch((error) => alert(error.message));
   };
 
   return (
@@ -33,12 +40,25 @@ const Calendar = ({ weekDates, isModalVisible, setModalVisible }) => {
         <Navigation weekDates={weekDates} />
         <div className="calendar__body">
           <div className="calendar__week-container">
-              <Sidebar />
-              <Week weekDates={weekDates} events={events} onDeleteEvent={handleDeleteEvent} />
+            <Sidebar />
+            <Week
+              weekDates={weekDates}
+              events={events}
+              onDeleteEvent={handleDeleteEvent}
+              setModalVisible={setModalVisible}
+              setEventVisible={setEventVisible}
+            />
           </div>
         </div>
       </section>
       {isModalVisible && <Modal setModalVisible={setModalVisible} getEvents={getEvents} />}
+      {isEventVisible.isVisible && (
+        <ModalEvent
+          setEventVisible={setEventVisible}
+          dataEvent={isEventVisible}
+          onDeleteEvent={handleDeleteEvent}
+        />
+      )}
     </>
   );
 };
