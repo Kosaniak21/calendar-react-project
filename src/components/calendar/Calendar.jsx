@@ -64,7 +64,7 @@ const Calendar = ({ weekDates, isModalVisible, setModalVisible }) => {
 };
 Calendar.propTypes = {
   weekDates: PropTypes.array.isRequired,
-  isModalVisible: PropTypes.bool,
+  isModalVisible: PropTypes.bool.isRequired,
   setModalVisible: PropTypes.func.isRequired,
 };
 export default Calendar;

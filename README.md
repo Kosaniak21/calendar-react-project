@@ -1,7 +1,4 @@
-<div align="center">
-  <img width="100%" src="https://mariosfakiolas.com/uploads/react.jpeg">
-  <h1 style="margin-bottom:20px; margin-top:20px;">React-Calendar</h1>
-</div>
+<h1 style="margin-bottom:20px; margin-top:20px;">React-Calendar</h1>
 
 ## Specification:
 
@@ -45,4 +42,4 @@ npm run build
 
 <div><h1></h1></div>
 
-Copyright (c) 2021-present, [Kosaniak Viktor](https://github.com/Kosanyak19)
+Copyright (c) 2021-present, [Kosaniak Viktor](https://github.com/Kosaniak21)

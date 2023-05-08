@@ -1,66 +1,56 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
-
 module.exports = (env, argv) => {
-    const isProduction = argv.mode === 'production';
-    const config = {
-        entry: './src/index.jsx',
-        output: {
-            filename: 'bundle.js',
+  const isProd = argv.mode === 'production';
+  const config = {
+    entry: './src/index.jsx',
+    output: {
+      filename: 'bundle.js',
+      clean: true,
+    },
+    module: {
+      rules: [
+        {
+          test: /.jsx?$/,
+          use: ['babel-loader'],
         },
-        module: {
-            rules: [
-                {
-                    test: /.jsx?$/,
-                    use: ['babel-loader'],
-                },
-                {
-                    test: /.s?css$/,
-                    use: [
-                        isProduction
-                            ? MiniCssExtractPlugin.loader
-                            : 'style-loader',
-                        'css-loader',
-                        'sass-loader',
-                    ],
-                },
-                {
-                    test: /\.(png|jp(e*)g|svg|gif)$/,
-                    use: [
-                      {
-                        loader: 'file-loader',
-                        options: {
-                          name: 'images/[hash]-[name].[ext]',
-                        },
-                      },
-                    ],
-                  },
-            ],
+        {
+          test: /.s?css$/,
+          use: [isProd ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader'],
         },
-        resolve: {
-            extensions: ['.js', '.jsx'],
+        {
+          test: /\.(png|svg|jpg|jpeg|gif|webp|ico)$/i,
+          type: 'asset/resource',
+          generator: {
+            filename: 'images/[name][ext]',
+          },
         },
-        plugins: [
-            new webpack.ProgressPlugin(),
-            new CleanWebpackPlugin(),
-            new HtmlWebpackPlugin({
-                template: './src/index.html',
-            }),
-        ],
-        devServer: {
-            hot: true,
-        },
-    };
+      ],
+    },
+    resolve: {
+      extensions: ['.js', '.jsx'],
+    },
+    plugins: [
+      new webpack.ProgressPlugin(),
+      new HtmlWebpackPlugin({
+        template: './src/index.html',
+      }),
+    ],
+    devServer: {
+      hot: true,
+      historyApiFallback: true,
+    },
+    devtool: 'source-map',
+  };
 
-    if (isProduction) {
-        config.plugins.push(
-            new MiniCssExtractPlugin({
-                filename: '[name].css',
-            }),
-        );
-    }
+  if (isProd) {
+    config.plugins.push(
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
+      })
+    );
+  }
 
-    return config;
+  return config;
 };

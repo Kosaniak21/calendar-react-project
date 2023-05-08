@@ -79,9 +79,7 @@ const Modal = ({ setModalVisible, getEvents }) => {
     createEvent(newEvent)
       .then(() => getEvents())
       .catch((err) => alert(err.message));
-    setModalVisible({
-      isVisible: false,
-    });
+    setModalVisible(false);
   };
 
   return (
