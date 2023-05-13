@@ -18,7 +18,6 @@ const Calendar = ({ weekDates, isModalVisible, setModalVisible }) => {
     time: '',
     id: null,
   });
-  console.log(events);
   const getEvents = () => {
     getEventsList()
       .then(allEvents => setEvents(allEvents))

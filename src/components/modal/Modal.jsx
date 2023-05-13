@@ -28,6 +28,7 @@ const getSelectOptions = (selectedTime, selectedStartTime) => {
     }
     startMinute = 0;
   }
+
   return options;
 };
 
@@ -36,7 +37,6 @@ const Modal = ({ setModalVisible, getEvents }) => {
   const [startTime, setStartTime] = useState(format(new Date(), 'HH:mm'));
   const [endTime, setEndTime] = useState(format(addMinutes(new Date(), 15), 'HH:mm'));
   const [disabled, setDisabled] = useState(true);
-
   const context = useContext(DateContext);
 
   useEffect(() => {
@@ -119,7 +119,7 @@ const Modal = ({ setModalVisible, getEvents }) => {
                   }}
                   required
                 >
-                  {getSelectOptions()}
+                  {getSelectOptions(startTime, startTime)}
                 </select>
                 <span>-</span>
                 <select

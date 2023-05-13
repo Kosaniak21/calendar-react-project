@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { format, getHours } from 'date-fns';
 import PropTypes from 'prop-types';
-
 import Event from '../event/Event';
 import { formatMins } from '../../utils/dateUtils.js';
 import RedLine from './RedLine';
@@ -34,7 +33,6 @@ const Hour = ({
       {isToday && dataHour === getHours(new Date()) && <RedLine />}
 
       {hourEvents.map(({ id, dateFrom, dateTo, title, description }, i, arr) => {
-        console.log(hourEvents);
         const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
 
         const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
