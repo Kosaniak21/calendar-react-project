@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { parse, setHours, setMinutes, format, addMinutes } from 'date-fns';
 import { createEvent } from '../../gateway/events';
 import { getDateTime } from '../../utils/dateUtils';
-import './modal.scss';
 import { DateContext } from '../../context/context';
+import './modal.scss';
 
 const getSelectOptions = (selectedTime, selectedStartTime) => {
   const options = [];
@@ -23,7 +23,7 @@ const getSelectOptions = (selectedTime, selectedStartTime) => {
       options.push(
         <option key={format(time, 'HH:mm')} value={format(time, 'HH:mm')}>
           {format(time, 'HH:mm')}
-        </option>
+        </option>,
       );
     }
     startMinute = 0;
@@ -53,7 +53,7 @@ const Modal = ({ setModalVisible, getEvents }) => {
   const titleRef = useRef();
   const descriptionRef = useRef();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
 
     const startDateTime = getDateTime(date, startTime);
@@ -78,7 +78,7 @@ const Modal = ({ setModalVisible, getEvents }) => {
 
     createEvent(newEvent)
       .then(() => getEvents())
-      .catch((err) => alert(err.message));
+      .catch(err => alert(err.message));
     setModalVisible(false);
   };
 
@@ -106,14 +106,14 @@ const Modal = ({ setModalVisible, getEvents }) => {
                 name="date"
                 className="event-form__field date__input"
                 value={date}
-                onChange={(e) => setDate(e.target.value)}
+                onChange={e => setDate(e.target.value)}
               />
 
               <div>
                 <select
                   className="event-form__field date__input"
                   value={startTime}
-                  onChange={(e) => {
+                  onChange={e => {
                     setDisabled(false);
                     setStartTime(e.target.value);
                   }}
@@ -125,7 +125,7 @@ const Modal = ({ setModalVisible, getEvents }) => {
                 <select
                   className="event-form__field date__input"
                   value={endTime}
-                  onChange={(e) => {
+                  onChange={e => {
                     setEndTime(e.target.value);
                   }}
                   required

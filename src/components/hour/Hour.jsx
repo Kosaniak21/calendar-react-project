@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import Event from '../event/Event';
 import { formatMins } from '../../utils/dateUtils.js';
-import './hour.scss';
 import RedLine from './RedLine';
 import { DateContext } from '../../context/context';
 
@@ -23,7 +22,7 @@ const Hour = ({
     <div
       className="calendar__time-slot"
       data-time={dataHour + 1}
-      onClick={(event) => {
+      onClick={event => {
         setModalVisible(true);
         context.setDateForHour({
           day: dayStart,
@@ -34,7 +33,8 @@ const Hour = ({
     >
       {isToday && dataHour === getHours(new Date()) && <RedLine />}
 
-      {hourEvents.map(({ id, dateFrom, dateTo, title, description }) => {
+      {hourEvents.map(({ id, dateFrom, dateTo, title, description }, i, arr) => {
+        console.log(hourEvents);
         const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
 
         const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;

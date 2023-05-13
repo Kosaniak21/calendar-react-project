@@ -18,20 +18,20 @@ const Calendar = ({ weekDates, isModalVisible, setModalVisible }) => {
     time: '',
     id: null,
   });
-
+  console.log(events);
   const getEvents = () => {
     getEventsList()
-      .then((allEvents) => setEvents(allEvents))
-      .catch((error) => alert(error.message));
+      .then(allEvents => setEvents(allEvents))
+      .catch(error => alert(error.message));
   };
   useEffect(() => {
     getEvents();
   }, []);
 
-  const handleDeleteEvent = (id) => {
+  const handleDeleteEvent = id => {
     deleteEvent(id)
-      .then((res) => getEvents())
-      .catch((error) => alert(error.message));
+      .then(res => getEvents())
+      .catch(error => alert(error.message));
   };
 
   return (

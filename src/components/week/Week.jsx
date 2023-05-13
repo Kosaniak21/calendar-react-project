@@ -6,12 +6,12 @@ import './week.scss';
 
 const Week = ({ weekDates, events, onDeleteEvent, setModalVisible, setEventVisible }) => (
   <div className="calendar__week">
-    {weekDates.map((dayStart) => {
+    {weekDates.map(dayStart => {
       const dayEnd = new Date(dayStart.getTime()).setHours(dayStart.getHours() + 24);
-      const dayEvents = events.filter(
-        (event) => event.dateFrom > dayStart && event.dateTo < dayEnd
-      );
 
+      const dayEvents = events.filter(
+        event => event.dateFrom >= dayStart && event.dateTo <= dayEnd,
+      );
       return (
         <Day
           key={dayStart.getDate()}

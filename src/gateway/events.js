@@ -2,13 +2,13 @@ const baseUrl = 'https://6426f50bd24d7e0de47c799c.mockapi.io/api/v1/events';
 
 export const getEventsList = () =>
   fetch(baseUrl)
-    .then((res) => {
+    .then(res => {
       if (!res.ok) {
         throw new Error("Internal Server Error. Can't display events");
       }
       return res.json();
     })
-    .then((events) =>
+    .then(events =>
       events
         .map(({ _id, dateFrom, dateTo, ...event }) => ({
           id: _id,
@@ -16,17 +16,17 @@ export const getEventsList = () =>
           dateTo: new Date(dateTo),
           ...event,
         }))
-        .sort((a, b) => a.dateFrom - b.dateFrom)
+        .sort((a, b) => a.dateFrom - b.dateFrom),
     );
 
-export const createEvent = async (newEvent) => {
+export const createEvent = async newEvent => {
   const events = await getEventsList();
   const conflicts = events.filter(
-    (event) =>
+    event =>
       (newEvent.dateFrom >= event.dateFrom && newEvent.dateFrom < event.dateTo) ||
       (newEvent.dateTo > event.dateFrom && newEvent.dateTo <= event.dateTo) ||
       (event.dateFrom >= newEvent.dateFrom && event.dateFrom < newEvent.dateTo) ||
-      (event.dateTo > newEvent.dateFrom && event.dateTo <= newEvent.dateTo)
+      (event.dateTo > newEvent.dateFrom && event.dateTo <= newEvent.dateTo),
   );
   if (conflicts.length > 0) {
     throw new Error('There is a conflict with another event. Please choose a different date/time.');
@@ -53,10 +53,10 @@ export const createEvent = async (newEvent) => {
     ...createdEvent,
   };
 };
-export const deleteEvent = (id) =>
+export const deleteEvent = id =>
   fetch(`${baseUrl}/${id}`, {
     method: 'DELETE',
-  }).then((res) => {
+  }).then(res => {
     if (!res.ok) {
       throw new Error('Failed to delete task');
     }

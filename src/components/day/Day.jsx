@@ -7,11 +7,10 @@ const Day = ({ dataDay, dayStart, dayEvents, onDeleteEvent, setModalVisible, set
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
-
   return (
     <div className="calendar__day" data-day={dataDay}>
-      {hours.map((hour) => {
-        const hourEvents = dayEvents.filter((event) => event.dateFrom.getHours() === hour);
+      {hours.map(hour => {
+        const hourEvents = dayEvents.filter(event => event.dateFrom.getHours() === hour);
         return (
           <Hour
             key={dataDay + hour}
