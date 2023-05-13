@@ -6,19 +6,28 @@ import { getDateTime } from '../../utils/dateUtils';
 import { DateContext } from '../../context/context';
 import './modal.scss';
 
-const getSelectOptions = (selectedTime, selectedStartTime) => {
+const getSelectOptions = (selectedTime, selectedStartTime, second) => {
   const options = [];
+  options.push(
+    <option key={'picker'} value={''}>
+      pick
+    </option>,
+  );
   const selectedTimeDate = selectedTime ? parse(selectedTime, 'HH:mm', new Date()) : null;
   const startHour = selectedTimeDate ? selectedTimeDate.getHours() : 0;
   let startMinute = selectedTimeDate ? Math.ceil(selectedTimeDate.getMinutes() / 15) * 15 : 0;
-
+  console.log(options);
   if (selectedStartTime) {
     const selectedStartTimeDate = parse(selectedStartTime, 'HH:mm', new Date());
-    startMinute = Math.ceil(selectedStartTimeDate.getMinutes() / 15) * 15;
+    startMinute = selectedStartTimeDate.getMinutes();
   }
 
   for (let hour = startHour; hour < 24; hour += 1) {
-    for (let minute = startMinute; minute < 60; minute += 15) {
+    let endMinute = 60;
+    if (!second) {
+      endMinute = hour === 23 ? 45 : 60;
+    }
+    for (let minute = startMinute; minute < endMinute; minute += 15) {
       const time = setMinutes(setHours(new Date(), hour), minute);
       options.push(
         <option key={format(time, 'HH:mm')} value={format(time, 'HH:mm')}>
@@ -38,7 +47,7 @@ const Modal = ({ setModalVisible, getEvents }) => {
   const [endTime, setEndTime] = useState(format(addMinutes(new Date(), 15), 'HH:mm'));
   const [disabled, setDisabled] = useState(true);
   const context = useContext(DateContext);
-
+  console.log(startTime, endTime);
   useEffect(() => {
     const { day, hour, target } = context.dateForHour;
     if (target !== null) {
@@ -66,6 +75,11 @@ const Modal = ({ setModalVisible, getEvents }) => {
     const duration = (endDateTime.getTime() - startDateTime.getTime()) / (1000 * 60 * 60);
     if (duration > 6) {
       alert('The event cannot be more than 6 hours long');
+      return;
+    }
+    console.log(startDateTime, endDateTime);
+    if (new Date(startDateTime).getTime() === new Date(endDateTime).getTime()) {
+      alert('The start time and end time cannot be the same');
       return;
     }
 
@@ -119,7 +133,7 @@ const Modal = ({ setModalVisible, getEvents }) => {
                   }}
                   required
                 >
-                  {getSelectOptions(startTime, startTime)}
+                  {getSelectOptions()}
                 </select>
                 <span>-</span>
                 <select
@@ -131,7 +145,7 @@ const Modal = ({ setModalVisible, getEvents }) => {
                   required
                   disabled={disabled}
                 >
-                  {getSelectOptions(startTime, startTime)}
+                  {getSelectOptions(startTime, startTime, true)}
                 </select>
               </div>
             </div>

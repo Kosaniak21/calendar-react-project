@@ -17,7 +17,7 @@ const Event = ({ height, marginTop, id, title, time, description, setEventVisibl
     <div
       className="event"
       style={eventStyle}
-      onClick={(e) => {
+      onClick={e => {
         e.stopPropagation();
         setEventVisible({ isVisible: true, title, time, description, id });
       }}
