@@ -17,7 +17,16 @@ const ModalEvent = ({ dataEvent, setEventVisible, onDeleteEvent }) => {
         </div>
         <div>
           <button className="cross-button" onClick={() => setEventVisible({ isVisible: false })}>
-            +
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+              <path
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6.364 6.364l11.272 11.314m0-11.314L6.364 17.678"
+              />
+            </svg>
           </button>
           <button
             className="delete-icon"
