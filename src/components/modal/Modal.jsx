@@ -47,7 +47,7 @@ const Modal = ({ setModalVisible, getEvents }) => {
   const [endTime, setEndTime] = useState(format(addMinutes(new Date(), 15), 'HH:mm'));
   const [disabled, setDisabled] = useState(true);
   const context = useContext(DateContext);
-  console.log(startTime, endTime);
+
   useEffect(() => {
     const { day, hour, target } = context.dateForHour;
     if (target !== null) {
