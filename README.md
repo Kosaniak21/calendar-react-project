@@ -3,13 +3,15 @@
 ## Specification:
 
 This is a simple React application that allows users to keep track of events on specific dates and times. Users can add events to the calendar by clicking on a specific date and entering the details of the event.
-Link https://react-calendar-project.netlify.app/
 
 Features
--User-friendly interface
--Ability to add events to specific dates and times
--Responsive design for use on desktop and mobile devices
--Built using React and other modern web technologies
+
+- User-friendly interface
+- Ability to add events to specific dates and times
+- Responsive design for use on desktop and mobile devices
+- Built using React and other modern web technologies
+
+Live Demo https://react-calendar-project.netlify.app/
 
 ## Build Setup:
 
