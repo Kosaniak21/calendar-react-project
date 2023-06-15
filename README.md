@@ -17,7 +17,7 @@ Live Demo https://react-calendar-project.netlify.app/
 
 ```bash
 # Download repository:
-git clone https://github.com/Kosanyak19/calendar-react-project.git
+git clone https://github.com/Kosaniak21/calendar-react-project.git
 
 # Go to the app:
 cd react-calendar-project
