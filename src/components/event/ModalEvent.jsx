@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './modal-event.scss';
 
-const ModalEvent = ({ dataEvent, setEventVisible, onDeleteEvent }) => {
+const ModalEvent = ({ dataEvent, setEventModal, onDeleteEvent }) => {
   const { time, title, description, id } = dataEvent;
 
   return (
@@ -16,7 +16,7 @@ const ModalEvent = ({ dataEvent, setEventVisible, onDeleteEvent }) => {
           <div className="modal-event__description">{description}</div>
         </div>
         <div>
-          <button className="cross-button" onClick={() => setEventVisible({ isVisible: false })}>
+          <button className="cross-button" onClick={() => setEventModal({ isVisible: false })}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
               <path
                 fill="none"
@@ -31,7 +31,7 @@ const ModalEvent = ({ dataEvent, setEventVisible, onDeleteEvent }) => {
           <button
             className="delete-icon"
             onClick={() => {
-              setEventVisible({ isVisible: false });
+              setEventModal({ isVisible: false });
               onDeleteEvent(id);
             }}
           >
@@ -66,7 +66,7 @@ ModalEvent.propTypes = {
   title: PropTypes.string,
   time: PropTypes.string,
   description: PropTypes.string,
-  setEventVisible: PropTypes.func.isRequired,
+  setEventModal: PropTypes.func.isRequired,
 };
 
 export default ModalEvent;

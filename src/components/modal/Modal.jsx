@@ -1,9 +1,8 @@
-import React, { useState, useRef, useContext, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { parse, setHours, setMinutes, format, addMinutes } from 'date-fns';
 import { createEvent } from '../../gateway/events';
 import { getDateTime } from '../../utils/dateUtils';
-import { DateContext } from '../../context/context';
 import './modal.scss';
 
 const getSelectOptions = (selectedTime, selectedStartTime, second) => {
@@ -16,7 +15,6 @@ const getSelectOptions = (selectedTime, selectedStartTime, second) => {
   const selectedTimeDate = selectedTime ? parse(selectedTime, 'HH:mm', new Date()) : null;
   const startHour = selectedTimeDate ? selectedTimeDate.getHours() : 0;
   let startMinute = selectedTimeDate ? Math.ceil(selectedTimeDate.getMinutes() / 15) * 15 : 0;
-  console.log(options);
   if (selectedStartTime) {
     const selectedStartTimeDate = parse(selectedStartTime, 'HH:mm', new Date());
     startMinute = selectedStartTimeDate.getMinutes();
@@ -41,24 +39,24 @@ const getSelectOptions = (selectedTime, selectedStartTime, second) => {
   return options;
 };
 
-const Modal = ({ setModalVisible, getEvents }) => {
+const Modal = ({ setIsModalVisible, getEvents, setDateForHour, dateForHour }) => {
   const [date, setDate] = useState(format(new Date(), 'yyyy-MM-dd'));
   const [startTime, setStartTime] = useState(format(new Date(), 'HH:mm'));
   const [endTime, setEndTime] = useState(format(addMinutes(new Date(), 15), 'HH:mm'));
   const [disabled, setDisabled] = useState(true);
-  const context = useContext(DateContext);
 
-  useEffect(() => {
-    const { day, hour, target } = context.dateForHour;
-    if (target !== null) {
-      setDate(format(day, 'yyyy-MM-dd'));
-      setStartTime(format(day.setHours(hour), 'HH:mm'));
-      setEndTime(format(addMinutes(day.setHours(hour), 15), 'HH:mm'));
-      setDisabled(false);
-      context.setDateForHour({ day: null, hour: null, target: null });
-    }
-  }, [context.dateForHour]);
-
+  if (dateForHour) {
+    useEffect(() => {
+      const { day, hour, target } = dateForHour;
+      if (target !== null) {
+        setDate(format(day, 'yyyy-MM-dd'));
+        setStartTime(format(day.setHours(hour), 'HH:mm'));
+        setEndTime(format(addMinutes(day.setHours(hour), 15), 'HH:mm'));
+        setDisabled(false);
+        setDateForHour({ day: null, hour: null, target: null });
+      }
+    }, [dateForHour]);
+  }
   const titleRef = useRef();
   const descriptionRef = useRef();
 
@@ -77,7 +75,6 @@ const Modal = ({ setModalVisible, getEvents }) => {
       alert('The event cannot be more than 6 hours long');
       return;
     }
-    console.log(startDateTime, endDateTime);
     if (new Date(startDateTime).getTime() === new Date(endDateTime).getTime()) {
       alert('The start time and end time cannot be the same');
       return;
@@ -93,7 +90,7 @@ const Modal = ({ setModalVisible, getEvents }) => {
     createEvent(newEvent)
       .then(() => getEvents())
       .catch(err => alert(err.message));
-    setModalVisible(false);
+    setIsModalVisible(false);
   };
 
   return (
@@ -102,7 +99,7 @@ const Modal = ({ setModalVisible, getEvents }) => {
         <div className="create-event">
           <div className="create-event__heading">
             <p>Create an Event</p>
-            <button className="create-event__close-btn" onClick={() => setModalVisible(false)}>
+            <button className="create-event__close-btn" onClick={() => setIsModalVisible(false)}>
               +
             </button>
           </div>
@@ -167,7 +164,9 @@ const Modal = ({ setModalVisible, getEvents }) => {
 
 Modal.propTypes = {
   getEvents: PropTypes.func.isRequired,
-  setModalVisible: PropTypes.func.isRequired,
+  setIsModalVisible: PropTypes.func.isRequired,
+  dateForHour: PropTypes.object,
+  setDateForHour: PropTypes.func,
 };
 
 export default Modal;

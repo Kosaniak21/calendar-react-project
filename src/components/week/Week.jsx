@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import Day from '../day/Day';
 import './week.scss';
 
-const Week = ({ weekDates, events, onDeleteEvent, setModalVisible, setEventVisible }) => (
+const Week = ({ weekDates, events, getEvents }) => (
   <div className="calendar__week">
     {weekDates.map(dayStart => {
       const dayEnd = new Date(dayStart.getTime()).setHours(dayStart.getHours() + 24);
@@ -18,9 +17,7 @@ const Week = ({ weekDates, events, onDeleteEvent, setModalVisible, setEventVisib
           dataDay={dayStart.getDate()}
           dayStart={dayStart}
           dayEvents={dayEvents}
-          onDeleteEvent={onDeleteEvent}
-          setModalVisible={setModalVisible}
-          setEventVisible={setEventVisible}
+          getEvents={getEvents}
         />
       );
     })}
@@ -30,8 +27,7 @@ const Week = ({ weekDates, events, onDeleteEvent, setModalVisible, setEventVisib
 Week.propTypes = {
   weekDates: PropTypes.array.isRequired,
   events: PropTypes.array.isRequired,
-  onDeleteEvent: PropTypes.func.isRequired,
-  setEventVisible: PropTypes.func.isRequired,
+  getEvents: PropTypes.func.isRequired,
 };
 
 export default Week;

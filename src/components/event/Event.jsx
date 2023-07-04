@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './event.scss';
 
-const Event = ({ height, marginTop, id, title, time, description, setEventVisible }) => {
+const Event = ({ height, marginTop, id, title, time, description, setEventModal }) => {
   const eventStyle = {
     height,
     marginTop,
@@ -19,7 +19,7 @@ const Event = ({ height, marginTop, id, title, time, description, setEventVisibl
       style={eventStyle}
       onClick={e => {
         e.stopPropagation();
-        setEventVisible({ isVisible: true, title, time, description, id });
+        setEventModal({ isVisible: true, title, time, description, id });
       }}
     >
       <div className="event__title">{title}</div>
@@ -34,7 +34,7 @@ Event.propTypes = {
   title: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   onDeleteEvent: PropTypes.func.isRequired,
-  setEventVisible: PropTypes.func.isRequired,
+  setEventModal: PropTypes.func.isRequired,
 };
 
 export default Event;
