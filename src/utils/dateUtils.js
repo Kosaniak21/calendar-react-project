@@ -1,3 +1,5 @@
+import { parse, setMinutes, setHours, format } from 'date-fns';
+
 export const getWeekStartDate = date => {
   const dateCopy = new Date(date);
   const dayOfWeek = dateCopy.getDay();
@@ -40,3 +42,37 @@ export const months = [
   'November',
   'December',
 ];
+
+export const getSelectOptions = (selectedTime, selectedStartTime, second) => {
+  const options = [];
+  options.push(
+    <option key={'picker'} value={''}>
+      pick
+    </option>,
+  );
+  const selectedTimeDate = selectedTime ? parse(selectedTime, 'HH:mm', new Date()) : null;
+  const startHour = selectedTimeDate ? selectedTimeDate.getHours() : 0;
+  let startMinute = selectedTimeDate ? Math.ceil(selectedTimeDate.getMinutes() / 15) * 15 : 0;
+  if (selectedStartTime) {
+    const selectedStartTimeDate = parse(selectedStartTime, 'HH:mm', new Date());
+    startMinute = selectedStartTimeDate.getMinutes();
+  }
+
+  for (let hour = startHour; hour < 24; hour += 1) {
+    let endMinute = 60;
+    if (!second) {
+      endMinute = hour === 23 ? 45 : 60;
+    }
+    for (let minute = startMinute; minute < endMinute; minute += 15) {
+      const time = setMinutes(setHours(new Date(), hour), minute);
+      options.push(
+        <option key={format(time, 'HH:mm')} value={format(time, 'HH:mm')}>
+          {format(time, 'HH:mm')}
+        </option>,
+      );
+    }
+    startMinute = 0;
+  }
+
+  return options;
+};

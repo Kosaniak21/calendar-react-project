@@ -1,55 +1,53 @@
 .header {
-    display: flex;
-    height: 70px;
-    align-items: center;
-    background-color: #242525;
+  display: flex;
+  height: 70px;
+  align-items: center;
+  background-color: #242525;
 }
 .create-btn {
-    padding: 0 16px;
-    background-color: #4B3DC9;
-    width: 197px;
-    letter-spacing: 1.5px;
-    display: flex;
-    align-items: center;
+  padding: 0 16px;
+  background-color: #4b3dc9;
+  width: 197px;
+  letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
 }
 .create-btn svg {
-    margin-right: 12px;
-    margin-left: 28px;
-    stroke: white;
-    stroke-width: 0.02em;
+  margin-right: 12px;
+  margin-left: 28px;
+  stroke: white;
+  stroke-width: 0.02em;
 }
-
 .navigation {
-    display: flex;
-    align-items: center;
-    &__today-btn {
-        background-color:#6C60FF;
-        width: 164px;
-        letter-spacing: 1.5px;
-        margin-right: 15px;
-    }
-
-    &__nav-icon {
-        font-size: 16px;
-    }
-    &__displayed-month {
-        margin-left: 10px;
-        color: #B3B3B3;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 21px;
-        margin-right: 10px;
-        letter-spacing: 2px;
-    }
+  display: flex;
+  align-items: center;
+  &__today-btn {
+    background-color: #6c60ff;
+    width: 164px;
+    letter-spacing: 1.5px;
+    margin-right: 15px;
+  }
+  &__nav-icon {
+    font-size: 16px;
+  }
+  &__displayed-month {
+    margin-left: 10px;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 21px;
+    margin-right: 10px;
+    letter-spacing: 2px;
+  }
 }
 .icon:hover {
-  fill:black;
+  fill: black;
 }
 .fas {
-    color: #B3B3B3;
-    font-size: 15px;
-    font-weight: bold;
+  color: #b3b3b3;
+  font-size: 15px;
+  font-weight: bold;
 }
 .fas:hover {
-    color: whitesmoke;
+  color: whitesmoke;
 }
