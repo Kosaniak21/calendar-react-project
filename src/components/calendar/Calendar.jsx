@@ -6,17 +6,15 @@ import Sidebar from '../sidebar/Sidebar';
 import './calendar.scss';
 
 const Calendar = ({ weekDates, events, getEvents }) => (
-  <>
-    <section className="calendar">
-      <Navigation weekDates={weekDates} />
-      <div className="calendar__body">
-        <div className="calendar__week-container">
-          <Sidebar />
-          <Week weekDates={weekDates} events={events} getEvents={getEvents} />
-        </div>
+  <section className="calendar">
+    <Navigation weekDates={weekDates} />
+    <div className="calendar__body">
+      <div className="calendar__week-container">
+        <Sidebar />
+        <Week weekDates={weekDates} events={events} getEvents={getEvents} />
       </div>
-    </section>
-  </>
+    </div>
+  </section>
 );
 
 Calendar.propTypes = {
