@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { subWeeks, addWeeks } from 'date-fns';
-
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar';
 import { getEventsList } from './gateway/events';

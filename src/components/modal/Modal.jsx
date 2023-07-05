@@ -24,7 +24,6 @@ const Modal = ({ setIsModalVisible, getEvents, setDateForHour, dateForHour }) =>
     }, [dateForHour]);
   }
   const titleRef = useRef();
-  const descriptionRef = useRef();
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -50,7 +49,6 @@ const Modal = ({ setIsModalVisible, getEvents, setDateForHour, dateForHour }) =>
       title: titleRef.current.value,
       dateFrom: startDateTime,
       dateTo: endDateTime,
-      description: descriptionRef.current.value,
     };
 
     createEvent(newEvent)
@@ -112,12 +110,6 @@ const Modal = ({ setIsModalVisible, getEvents, setDateForHour, dateForHour }) =>
                 </select>
               </div>
             </div>
-            <textarea
-              ref={descriptionRef}
-              name="description"
-              placeholder="Description"
-              className="event-form__field event-form__description"
-            ></textarea>
             <button type="submit" className="event-form__submit-btn">
               Create
             </button>

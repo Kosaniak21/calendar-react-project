@@ -2,15 +2,19 @@
   position: absolute;
   width: 97%;
   background-color: #2b505e;
-  position: relative;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   z-index: 1;
   color: #fff;
   cursor: pointer;
   border-radius: 12px;
+  margin-bottom: 20px;
   border-left: 12px solid #04dec4;
   margin-left: 2px;
+  border-right: 1px solid transparent;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
   &__title {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -20,34 +24,19 @@
   }
   &__time {
     position: absolute;
-    top: 80%;
-    animation: identifier 0.5s ease-in-out forwards;
-    display: none;
-    z-index: 2;
+    top: 0;
+    right: 0;
+    border-radius: 15px;
+    background-color: #04dec4;
+    padding: 1px 3px 0px 3px;
+    font-weight: bold;
+    font-size: 0.65rem;
+    color: #9ba6aa;
+    background-color: #eff9f4;
   }
   &:hover {
     border-right: 1px solid #04dec4;
     border-top: 1px solid #04dec4;
     border-bottom: 1px solid #04dec4;
-  }
-}
-.delete-event-btn {
-  position: absolute;
-  top: -35px;
-  right: -35px;
-  transform: rotate(45deg);
-  background-color: transparent;
-  border: none;
-  font-size: 32px;
-  opacity: 0.6;
-  background: #eee;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  outline: none;
-  cursor: pointer;
-
-  &:hover {
-    background: #ccc;
   }
 }

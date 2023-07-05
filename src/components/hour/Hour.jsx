@@ -5,25 +5,9 @@ import Event from '../event/Event';
 import { formatMins } from '../../utils/dateUtils.js';
 import RedLine from './RedLine';
 import Modal from './../modal/Modal';
-import { deleteEvent } from '../../gateway/events';
-import ModalEvent from '../event/ModalEvent';
 
 const Hour = ({ dayStart, dataHour, hourEvents, getEvents }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const [eventModal, setEventModal] = useState({
-    isVisible: false,
-    title: '',
-    description: '',
-    time: '',
-    id: null,
-  });
-
-  const handleDeleteEvent = id => {
-    deleteEvent(id)
-      .then(getEvents)
-      .catch(error => alert(error.message));
-  };
 
   const isToday = format(dayStart, 'MM dd yyyy') === format(new Date(), 'MM dd yyyy');
 
@@ -49,9 +33,9 @@ const Hour = ({ dayStart, dataHour, hourEvents, getEvents }) => {
       >
         {isToday && dataHour === getHours(new Date()) && <RedLine />}
 
-        {hourEvents.map(({ id, dateFrom, dateTo, title, description }) => {
+        {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
           const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
-
+          console.log(dateFrom);
           const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
 
           return (
@@ -59,12 +43,10 @@ const Hour = ({ dayStart, dataHour, hourEvents, getEvents }) => {
               key={id}
               id={id}
               title={title}
-              description={description}
-              onDeleteEvent={handleDeleteEvent}
               height={(dateTo.getTime() - dateFrom.getTime()) / (1000 * 60)}
               marginTop={dateFrom.getMinutes()}
               time={`${eventStart} - ${eventEnd}`}
-              setEventModal={setEventModal}
+              getEvents={getEvents}
             />
           );
         })}
@@ -75,13 +57,6 @@ const Hour = ({ dayStart, dataHour, hourEvents, getEvents }) => {
           getEvents={getEvents}
           setDateForHour={setDateForHour}
           dateForHour={dateForHour}
-        />
-      )}
-      {eventModal.isVisible && (
-        <ModalEvent
-          setEventModal={setEventModal}
-          dataEvent={eventModal}
-          onDeleteEvent={handleDeleteEvent}
         />
       )}
     </>

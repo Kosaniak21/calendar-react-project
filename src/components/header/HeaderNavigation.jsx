@@ -1,6 +1,6 @@
 import React from 'react';
-import { format } from 'date-fns';
 import PropTypes from 'prop-types';
+import { format } from 'date-fns';
 
 const HeaderNavigation = ({ onTodayWeek, onPrevWeek, onNextWeek, weekDates }) => {
   const currentMonth = format(weekDates[0], 'MMMM');

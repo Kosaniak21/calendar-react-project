@@ -1,0 +1,28 @@
+.delete-btn {
+  background-color: rgb(225, 33, 255);
+  border-radius: 30px;
+  color: white;
+  z-index: 9999;
+  position: relative;
+  right: 0;
+  bottom: -24px;
+  display: flex;
+  align-items: center;
+  border: 2px solid transparent;
+  &:hover {
+    border: 2px solid white;
+  }
+}
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: white;
+}
+.svg-icon circle {
+  stroke: white;
+  stroke-width: 1;
+}

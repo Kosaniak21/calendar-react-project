@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import IconSvg from './IconSvg.jsx';
 import HeaderNavigation from './HeaderNavigation';
-import './header.scss';
 import Modal from './../modal/Modal';
+import './header.scss';
 
 const Header = ({ weekDates, onPrevWeek, onNextWeek, onTodayWeek, getEvents }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
