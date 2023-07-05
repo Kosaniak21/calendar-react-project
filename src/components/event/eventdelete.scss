@@ -1,16 +1,33 @@
 .delete-btn {
   background-color: rgb(225, 33, 255);
-  border-radius: 30px;
+  border-radius: 35px;
+  height: 13px;
+  font-size: 13px;
   color: white;
-  z-index: 9999;
-  position: relative;
-  right: 0;
-  bottom: -24px;
   display: flex;
   align-items: center;
-  border: 2px solid transparent;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 1px solid transparent;
   &:hover {
-    border: 2px solid white;
+    border: 1px solid white;
+  }
+  &.slide-out {
+    animation-name: slideOut;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+}
+@keyframes slideOut {
+  0% {
+    width: 0px;
+    opacity: 0;
+  }
+  100% {
+    width: 70px;
+    opacity: 1;
   }
 }
 .svg-icon {

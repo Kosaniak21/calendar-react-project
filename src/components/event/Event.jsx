@@ -6,6 +6,7 @@ import EventDelete from './EventDelete';
 
 const Event = ({ height, marginTop, id, title, time, getEvents }) => {
   const [isEventDeleteVisible, setIsEventDeleteVisible] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const eventStyle = {
     height,
@@ -21,16 +22,17 @@ const Event = ({ height, marginTop, id, title, time, getEvents }) => {
   const handleClick = e => {
     e.stopPropagation();
     setIsEventDeleteVisible(!isEventDeleteVisible);
+    setIsDeleting(!isDeleting);
   };
 
   return (
-    <>
-      <div className="event" style={eventStyle} onClick={handleClick}>
-        <div className="event__title">{title}</div>
-        <div className="event__time">{time}</div>
-        {isEventDeleteVisible && <EventDelete id={id} getEvents={getEvents} />}
-      </div>
-    </>
+    <div className="event" style={eventStyle} onClick={handleClick}>
+      <div className="event__title">{title}</div>
+      <div className="event__time">{time}</div>
+      {isEventDeleteVisible && (
+        <EventDelete id={id} getEvents={getEvents} animationOn={isDeleting} />
+      )}
+    </div>
   );
 };
 

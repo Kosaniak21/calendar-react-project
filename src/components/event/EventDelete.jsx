@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './eventdelete.scss';
 import { deleteEvent } from '../../gateway/events';
 
-const EventDelete = ({ id, getEvents }) => {
+const EventDelete = ({ id, getEvents, animationOn }) => {
   const handleDeleteEvent = id => {
     deleteEvent(id)
       .then(getEvents)
@@ -16,7 +16,7 @@ const EventDelete = ({ id, getEvents }) => {
         e.stopPropagation();
         handleDeleteEvent(id);
       }}
-      className="delete-btn"
+      className={`delete-btn ${animationOn ? 'slide-out' : ''}`}
     >
       <svg className="svg-icon" viewBox="0 0 20 20">
         <path
