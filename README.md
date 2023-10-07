@@ -45,4 +45,4 @@ npm run build
 
 <div><h1></h1></div>
 
-Copyright (c) 2021-present, [Kosaniak Viktor](https://github.com/Kosaniak21)
+Copyright (c) 2023-present, [Kosaniak Viktor](https://github.com/Kosaniak21)
